@@ -3,16 +3,47 @@ import path from "path";
 import { ToolResult } from "../types.js";
 import { settings } from "../config.js";
 
-let cachedScamAddresses: Set<string> | null = null;
+export interface ScamRecord {
+  address: string;
+  label: string;
+  source: string;
+  date_added: string;
+  is_scam: boolean;
+}
 
-function loadScamAddresses(): Set<string> {
-  if (cachedScamAddresses) {
-    return cachedScamAddresses;
+let cachedScamDatabase: {
+  scamMap: Map<string, ScamRecord>;
+  scamCount: number;
+} | null = null;
+
+function resolveCsvPath(): string | null {
+  const configured = settings.knownScamsFilePath || "data/known_scams.csv";
+  const candidatePaths = [
+    path.isAbsolute(configured) ? configured : path.resolve(process.cwd(), configured),
+    path.resolve(process.cwd(), "data", "known_scams.csv"),
+    path.resolve(process.cwd(), "../data", "known_scams.csv"),
+    "/data/known_scams.csv",
+  ];
+
+  for (const p of candidatePaths) {
+    if (fs.existsSync(p)) {
+      return p;
+    }
   }
-  const set = new Set<string>();
+  return null;
+}
+
+function loadScamDatabase(): { scamMap: Map<string, ScamRecord>; scamCount: number } {
+  if (cachedScamDatabase) {
+    return cachedScamDatabase;
+  }
+
+  const scamMap = new Map<string, ScamRecord>();
+  let scamCount = 0;
+
   try {
-    const csvPath = path.resolve(process.cwd(), "data", "known_scams.csv");
-    if (fs.existsSync(csvPath)) {
+    const csvPath = resolveCsvPath();
+    if (csvPath) {
       const content = fs.readFileSync(csvPath, "utf-8");
       const lines = content.split("\n");
       for (let i = 1; i < lines.length; i++) {
@@ -21,63 +52,53 @@ function loadScamAddresses(): Set<string> {
         const parts = line.split(",");
         const addr = parts[0]?.trim().toLowerCase();
         if (addr && addr.startsWith("0x") && addr.length === 42) {
-          set.add(addr);
+          const label = parts[1]?.trim() || "Reported scam entity";
+          const source = parts[2]?.trim() || "Threat Intelligence CSV";
+          const dateAdded = parts[3]?.trim() || "";
+          
+          // Check if this entry is a benign/false-positive test address
+          const lowerLabel = label.toLowerCase();
+          const isNotScam = lowerLabel.includes("not scam") || lowerLabel.includes("false positive");
+          const isScam = !isNotScam;
+
+          const record: ScamRecord = {
+            address: addr,
+            label,
+            source,
+            date_added: dateAdded,
+            is_scam: isScam,
+          };
+
+          scamMap.set(addr, record);
+          if (isScam) {
+            scamCount++;
+          }
         }
       }
+    } else {
+      console.warn("Could not locate known_scams.csv static threat list.");
     }
   } catch (err) {
     console.warn("Failed to read known_scams.csv:", err);
   }
-  cachedScamAddresses = set;
-  return set;
-}
 
-async function checkGoPlus(address: string): Promise<Record<string, any> | null> {
-  if (!settings.goplusApiKey) return null;
-  try {
-    const res = await fetch(`https://api.gopluslabs.io/api/v1/token_security/1?contract_addresses=${address}`, {
-      headers: { Authorization: settings.goplusApiKey },
-      signal: AbortSignal.timeout(5000),
-    });
-    if (res.ok) {
-      const data = await res.json();
-      return data?.result?.[address.toLowerCase()] || null;
-    }
-  } catch {
-    // Graceful fallback
-  }
-  return null;
+  cachedScamDatabase = { scamMap, scamCount };
+  return cachedScamDatabase;
 }
 
 export async function searchKnownScamLists(address: string): Promise<ToolResult> {
   const addrLower = address.toLowerCase();
-  const knownScams = loadScamAddresses();
-  const csvMatch = knownScams.has(addrLower);
+  const { scamMap, scamCount } = loadScamDatabase();
+  const record = scamMap.get(addrLower);
 
-  const goplusResult = await checkGoPlus(address);
-  let goplusFlagged = false;
-  let goplusDetails: Record<string, any> | null = null;
-
-  if (goplusResult) {
-    goplusFlagged = goplusResult.is_honeypot === "1" || goplusResult.is_blacklisted === "1";
-    goplusDetails = {
-      is_honeypot: goplusResult.is_honeypot,
-      is_blacklisted: goplusResult.is_blacklisted,
-      cannot_sell_all: goplusResult.cannot_sell_all,
-    };
-  }
-
-  const matched = csvMatch || goplusFlagged;
+  const matched = Boolean(record && record.is_scam);
   const sources: string[] = [];
-  if (csvMatch) sources.push("CryptoScamDB static list");
-  if (goplusFlagged) sources.push("GoPlus Security API");
 
-  let confidence: "none" | "low" | "medium" | "high" = "none";
-  if (sources.length > 1 || csvMatch) {
-    confidence = "high";
-  } else if (goplusFlagged) {
-    confidence = "medium";
+  if (matched && record) {
+    sources.push(record.source || "CryptoScamDB static list");
   }
+
+  const confidence: "none" | "low" | "medium" | "high" = matched ? "high" : "none";
 
   return {
     tool: "search_known_scam_lists",
@@ -88,10 +109,17 @@ export async function searchKnownScamLists(address: string): Promise<ToolResult>
       matched,
       confidence,
       match_sources: sources,
-      csv_match: csvMatch,
-      goplus_flagged: goplusFlagged,
-      goplus_details: goplusDetails,
-      total_known_scams_in_db: knownScams.size,
+      csv_match: matched,
+      record: record
+        ? {
+            label: record.label,
+            source: record.source,
+            date_added: record.date_added,
+            is_scam: record.is_scam,
+          }
+        : null,
+      known_benign: Boolean(record && !record.is_scam),
+      total_known_scams_in_db: scamCount,
     },
     error: null,
     cached: false,

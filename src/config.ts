@@ -5,7 +5,7 @@ export const settings = {
   etherscanApiKey: process.env.ETHERSCAN_API_KEY || "",
   geminiApiKey: process.env.GEMINI_API_KEY || "",
   web3ProviderUrl: process.env.WEB3_PROVIDER_URL || "https://rpc.sepolia.org",
-  goplusApiKey: process.env.GOPLUS_API_KEY || "",
+  knownScamsFilePath: process.env.KNOWN_SCAMS_FILE_PATH || "data/known_scams.csv",
   cacheTtlSeconds: parseInt(process.env.CACHE_TTL_SECONDS || "3600", 10),
   maxInvestigationDepth: parseInt(process.env.MAX_INVESTIGATION_DEPTH || "4", 10),
   escalationThresholdHistory: parseInt(process.env.ESCALATION_THRESHOLD_HISTORY || "70", 10),

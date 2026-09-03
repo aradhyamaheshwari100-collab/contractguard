@@ -11,14 +11,13 @@ CROSS-REFERENCE RESULTS:
 {xref_data}
 
 DATABASE SOURCES CHECKED:
-- CryptoScamDB static list (community-reported scam addresses)
-- GoPlus Security API (if available)
+- Static Known Scams Database (data/known_scams.csv - threat intelligence)
 
 SCORING GUIDANCE:
-- 0: No matches found in any database
-- 40-60: Match in lower-confidence source
-- 70-85: Match in high-confidence source (CryptoScamDB)
-- 86-100: Match in multiple sources or confirmed honeypot
+- 0: No matches found in known scam lists (or verified benign/false positive test)
+- 40-60: Unverified or lower-confidence match
+- 70-85: Match in known threat list
+- 86-100: Match in confirmed scam database with high severity / exploit record
 
 Return ONLY this exact JSON structure:
 {
@@ -59,7 +58,8 @@ export class CrossReferenceAgent extends BaseAgent {
       confidence: r.data?.confidence || "none",
       match_sources: r.data?.match_sources || [],
       csv_match: Boolean(r.data?.csv_match),
-      goplus_flagged: Boolean(r.data?.goplus_flagged),
+      record: r.data?.record || null,
+      known_benign: Boolean(r.data?.known_benign),
     }));
 
     try {
