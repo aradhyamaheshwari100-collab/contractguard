@@ -1,0 +1,21 @@
+# Demo Contract Addresses (Sepolia Testnet)
+# After deploying contracts via Remix IDE, paste addresses below.
+# The frontend reads this file to populate the demo buttons.
+#
+# Format:
+#   CLEAN=0x<address>
+#   BACKDOORED=0x<address>
+#
+# ── Instructions ──────────────────────────────────────────────────────────────
+# 1. Open https://remix.ethereum.org
+# 2. Install OpenZeppelin: Plugins → OpenZeppelin Contracts Wizard,
+#    OR use npm import in Remix for @openzeppelin/contracts v5
+# 3. Compile contracts/CleanToken.sol with Solidity 0.8.20
+# 4. Deploy to Sepolia (MetaMask, get Sepolia ETH from sepoliafaucet.com)
+# 5. Copy the deployed address below
+# 6. Verify on https://sepolia.etherscan.io → Contract → Verify & Publish
+#    Compiler: 0.8.20, License: MIT, Optimization: No
+# 7. Repeat for contracts/BackdooredToken.sol
+
+CLEAN=PASTE_CLEAN_TOKEN_ADDRESS_HERE
+BACKDOORED=PASTE_BACKDOORED_TOKEN_ADDRESS_HERE
