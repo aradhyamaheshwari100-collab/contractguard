@@ -9,3 +9,42 @@ address,label,source,date_added
 0x72a5343dc1b386a3e509ce39f0b5c00f67e17ba5,Reported rug pull token,community-report,2024-04-15
 0xbebe69e9634b73c0df8e5d924038e4e0c1af2e4a,Honeypot deployer,GoPlus-community,2024-05-01
 0x45fac5422f6b35d2a935b5b523a50be4e3fd3a41,Known serial rug-puller,CryptoScamDB,2024-05-20
+0xC8a65Fadf0e0dDAf421F28FEAb69Bf6E2E589963,Poly Network Exploiter,RektNews,2024-06-01
+0xeb31973e0febf3e3d7058234a5ebbae1ab4b8c23,KuCoin Hacker,CryptoScamDB,2024-06-01
+0xe74b28ce2de3d50cb4d90f0b4a530eb3bc1106fc,Wintermute Exploiter,RektNews,2024-06-01
+0x9f58cb04f9814526d17e57c6778f2cbceef67b7e,Nomad Bridge Exploiter,RektNews,2024-06-01
+0x59abf3837fa962d6853b4cc0a19513aa031fd32b,FTX Accounts Drainer,CryptoScamDB,2024-06-01
+0x5f259d0b76665c337c6104145894f4d1d2758b8c,Euler Finance Exploiter,RektNews,2024-06-01
+0x1c39ba39e4735cb65978d4db400cdda22db87b32,Bitfinex Hacker,CryptoScamDB,2024-06-01
+0x3d00f6813a076722fc2d33400abf459ba4cd803e,Upbit Hacker,CryptoScamDB,2024-06-01
+0x5993C1fDE25e89DE1B92040D9e9334bb2AC955bE,SushiSwap Router Exploiter,RektNews,2024-06-01
+0x1111111111111111111111111111111111111111,Demo Clean Token - not scam (false positive test),manual,2024-06-01
+0x2222222222222222222222222222222222222222,Demo Backdoored Token,manual,2024-06-01
+0xa1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1,Simulated Phishing Address 1,simulated,2024-06-01
+0xb2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2,Simulated Phishing Address 2,simulated,2024-06-01
+0xc3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3,Simulated Scam Deployer 1,simulated,2024-06-01
+0xd4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4,Simulated Scam Deployer 2,simulated,2024-06-01
+0xe5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5,Simulated Rug Pull Token 1,simulated,2024-06-01
+0xf6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6,Simulated Rug Pull Token 2,simulated,2024-06-01
+0x0707070707070707070707070707070707070707,Simulated Honeypot Token 1,simulated,2024-06-01
+0x1818181818181818181818181818181818181818,Simulated Honeypot Token 2,simulated,2024-06-01
+0x2929292929292929292929292929292929292929,Simulated Fake Airdrop 1,simulated,2024-06-01
+0x3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a,Simulated Fake Airdrop 2,simulated,2024-06-01
+0x4b4b4b4b4b4b4b4b4b4b4b4b4b4b4b4b4b4b4b4b,Simulated Phishing Site Linked 1,simulated,2024-06-01
+0x5c5c5c5c5c5c5c5c5c5c5c5c5c5c5c5c5c5c5c5c,Simulated Phishing Site Linked 2,simulated,2024-06-01
+0x6d6d6d6d6d6d6d6d6d6d6d6d6d6d6d6d6d6d6d6d,Simulated Exploiter Wallet 1,simulated,2024-06-01
+0x7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e,Simulated Exploiter Wallet 2,simulated,2024-06-01
+0x8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f,Simulated Drainer Contract 1,simulated,2024-06-01
+0x9090909090909090909090909090909090909090,Simulated Drainer Contract 2,simulated,2024-06-01
+0x0101010101010101010101010101010101010101,Simulated Fake Token Deployer 1,simulated,2024-06-01
+0x1212121212121212121212121212121212121212,Simulated Fake Token Deployer 2,simulated,2024-06-01
+0x2323232323232323232323232323232323232323,Simulated Flash Loan Attacker 1,simulated,2024-06-01
+0x3434343434343434343434343434343434343434,Simulated Flash Loan Attacker 2,simulated,2024-06-01
+0x4545454545454545454545454545454545454545,Simulated Front Runner Bot 1,simulated,2024-06-01
+0x5656565656565656565656565656565656565656,Simulated Front Runner Bot 2,simulated,2024-06-01
+0x6767676767676767676767676767676767676767,Simulated Sandwich Attacker 1,simulated,2024-06-01
+0x7878787878787878787878787878787878787878,Simulated Sandwich Attacker 2,simulated,2024-06-01
+0x8989898989898989898989898989898989898989,Simulated Rug Puller 1,simulated,2024-06-01
+0x9a9a9a9a9a9a9a9a9a9a9a9a9a9a9a9a9a9a9a9a,Simulated Rug Puller 2,simulated,2024-06-01
+0xabcbabcbabcbabcbabcbabcbabcbabcbabcbabcb,Simulated Unknown Exploit,simulated,2024-06-01
+0xcdedcdedcdedcdedcdedcdedcdedcdedcdedcded,Simulated Exploit Related Address,simulated,2024-06-01

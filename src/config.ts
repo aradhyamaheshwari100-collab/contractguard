@@ -13,5 +13,5 @@ export const settings = {
   port: parseInt(process.env.PORT || "3000", 10),
   host: process.env.HOST || "0.0.0.0",
   environment: process.env.ENVIRONMENT || "development",
-  geminiModel: process.env.GEMINI_MODEL || "gemini-2.5-flash",
+  geminiModel: process.env.GEMINI_MODEL || "gemini-2.0-flash",
 };
