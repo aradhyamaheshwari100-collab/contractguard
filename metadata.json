@@ -1,0 +1,6 @@
+{
+  "name": "ContractGuard",
+  "description": "Autonomous Smart Contract Risk Investigator that analyzes blockchain smart contracts for fraud risk using multi-step AI agent analysis.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
