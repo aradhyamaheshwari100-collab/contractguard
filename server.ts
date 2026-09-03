@@ -8,7 +8,7 @@ import { runInvestigation } from "./src/orchestrator/loop.js";
 import { InvestigationStatus, TraceStep } from "./src/types.js";
 
 const app = express();
-const PORT = 3000;
+const PORT = settings.port;
 
 app.use(cors());
 app.use(express.json());
