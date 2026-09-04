@@ -1,55 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"/>
   <title>ContractGuard — AI Smart Contract Risk Investigator</title>
-  <meta name="description" content="ContractGuard autonomously investigates blockchain smart contracts for fraud risk using multi-step AI agent analysis." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/static/style.css" />
+  
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet"/>
+  
+  <link rel="stylesheet" href="/static/style.css"/>
 </head>
-<body>
+<body class="bg-surface text-on-surface">
 
-  <!-- ── Header ── -->
+  <!-- Header -->
   <header class="site-header">
     <div class="header-inner">
       <div class="brand">
-        <div class="brand-icon">
-          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M20 3L35 10V20C35 28.8 28.5 37.1 20 39C11.5 37.1 5 28.8 5 20V10L20 3Z" fill="url(#shield-grad)" />
-            <path d="M14 20L18 24L26 16" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <defs>
-              <linearGradient id="shield-grad" x1="5" y1="3" x2="35" y2="39" gradientUnits="userSpaceOnUse">
-                <stop stop-color="#f59e0b"/>
-                <stop offset="1" stop-color="#d97706"/>
-              </linearGradient>
-            </defs>
-          </svg>
-        </div>
-        <div>
-          <h1 class="brand-name">ContractGuard</h1>
-          <span class="brand-tagline">Autonomous Smart Contract Risk Investigator</span>
+        <img alt="ContractGuard Shield Logo" class="brand-logo" src="https://lh3.googleusercontent.com/aida/AEtjO1XMZwc7p4ohvuVeCF-u-y0vaXk4QUuyr3wEIZpg0XEOGuP8Rd8x-_gT4l4eUrn5RPYiLPsRdUTA7VbQuHDLcmoUdKUAFMPlHdkzuZmdgGj9XbI-Z_8zVdZ8Wk_8wZUQwSEbOA3ug35FUZVGOIu6CUmOdUBFgu85sJyGfRFwSfHpNbJ8HYmRvVlW9Wx9YqajvIwJcJskqwuxbeEJ2As0O62Fsi0knbpeLV-Pdnr7Jm6YJqJmnU2sg8JQLXdM"/>
+        <div class="brand-text">
+          <span class="brand-title">ContractGuard</span>
+          <span class="brand-subtitle">Investigator</span>
         </div>
       </div>
-      <div class="header-badges">
-        <span class="badge badge-ai">AI-Powered</span>
-        <span class="badge badge-chain">Sepolia Testnet</span>
+      <div class="header-actions">
+        <div class="network-badge">
+          <span class="network-dot">
+            <span class="ping"></span>
+            <span class="dot"></span>
+          </span>
+          <span class="network-name">Sepolia Active</span>
+        </div>
+        <button class="profile-btn">
+          <img alt="Profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAceqc6OWS9SWiMAEAHz9ehICg_idSaricqvYcbugKCskRdh69gPZzCLCzzlIIOZdPfR4bY_wTb7bbWlti4mTtyo2iorYTBeQhzJKGH0g5C79ukNFLr8jxw3tS8u9bpiBEZ8Lq98yN0c7cLmmVm5SKIiM9wmfo3n81pNIysQDzKqtTvOxSAOEgMe-ditM7c8xx9NhDIGFKni3dAOKdfHrXCtE7abipKto-ucNNka_PodSJps-qAaOjSBg"/>
+        </button>
       </div>
     </div>
   </header>
 
-  <!-- ── Hero Input ── -->
-  <main>
-    <section class="hero" id="hero-section">
+  <main class="main-content">
+    
+    <!-- Hero / Input form -->
+    <section class="hero-section" id="hero-section">
       <div class="hero-content">
-        <p class="hero-subtitle">Paste any smart contract address. ContractGuard deploys an autonomous multi-agent investigation — code analysis, deployer history, cross-reference checks — and returns an evidence-backed fraud risk verdict.</p>
-
+        <p class="hero-subtitle">Paste any smart contract address. ContractGuard deploys an autonomous multi-agent investigation to return an evidence-backed fraud risk verdict.</p>
+        
         <form id="investigate-form" class="search-form" novalidate>
           <div class="input-group">
-            <div class="input-prefix">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
-            </div>
+            <span class="material-symbols-outlined input-icon">terminal</span>
             <input
               id="contract-address"
               type="text"
@@ -62,7 +59,7 @@
             <button id="investigate-btn" type="submit" class="btn-investigate">
               <span class="btn-text">Investigate</span>
               <span class="btn-spinner hidden" aria-hidden="true"></span>
-              <svg class="btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              <span class="material-symbols-outlined btn-icon">arrow_forward</span>
             </button>
           </div>
           <div id="input-error" class="input-error hidden" role="alert"></div>
@@ -76,80 +73,113 @@
           <button class="demo-chip chip-danger" data-address="" id="demo-backdoor-btn">
             <span class="chip-dot"></span> Backdoored Token
           </button>
-          <a href="demo_addresses.txt" class="demo-link" target="_blank">View addresses →</a>
         </div>
       </div>
     </section>
 
-    <!-- ── Investigation Panel ── -->
+    <!-- Investigation Panel -->
     <section id="investigation-panel" class="investigation-panel hidden">
-
-      <!-- Status Bar -->
-      <div class="status-bar">
+      
+      <!-- Status Bar (from new design) -->
+      <div class="status-bar-new">
         <div class="status-left">
-          <div class="status-dot" id="status-dot"></div>
-          <span id="status-label">Initializing investigation...</span>
+          <span class="material-symbols-outlined text-primary">verified_user</span>
+          <span class="status-id">Investigation</span>
+          <span class="status-dot-sep">·</span>
+          <span class="status-net">Sepolia</span>
         </div>
         <div class="status-right">
-          <span class="status-address" id="status-address"></span>
-          <div class="suspicion-meter-wrap">
-            <span class="suspicion-label">Risk Score</span>
-            <div class="suspicion-meter">
-              <div class="suspicion-fill" id="suspicion-fill"></div>
-            </div>
-            <span class="suspicion-value" id="suspicion-value">0</span>
-          </div>
+          <span id="status-label" class="status-text">Initializing investigation...</span>
+          <div id="status-dot" class="status-indicator"></div>
         </div>
+      </div>
+      
+      <div class="status-meta" id="status-address"></div>
+      
+      <div class="suspicion-meter-wrap">
+        <span class="suspicion-label">Risk Score</span>
+        <div class="suspicion-meter">
+          <div class="suspicion-fill" id="suspicion-fill"></div>
+        </div>
+        <span class="suspicion-value" id="suspicion-value">0</span>
       </div>
 
       <!-- Live Trace Log -->
       <div class="trace-container">
         <div class="trace-header">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          Live Investigation Log
+          <div class="trace-title">
+            <span class="material-symbols-outlined">radar</span>
+            <span>Live Investigation Log</span>
+          </div>
+          <span class="trace-subtitle">Telemetric Vector Evidence</span>
         </div>
-        <div id="trace-log" class="trace-log" role="log" aria-live="polite" aria-label="Investigation steps">
-          <!-- Steps injected by JS -->
+        <div id="trace-log" class="trace-log">
+          <!-- injected by js -->
         </div>
       </div>
 
       <!-- Final Report Card -->
       <div id="report-card" class="report-card hidden">
+        <!-- Glow ambient accent -->
+        <div class="report-glow"></div>
+        
+        <!-- Verdict Header Bar -->
         <div class="report-header">
-          <div class="report-verdict-wrap">
-            <div class="report-verdict-icon" id="report-verdict-icon"></div>
-            <div>
-              <div class="report-verdict-label" id="report-verdict-label">Analyzing...</div>
-              <div class="report-score" id="report-score"></div>
-            </div>
-          </div>
-          <div class="report-meta">
-            <span id="report-agents"></span>
-            <span id="report-depth"></span>
+          <div class="verdict-title">
+            <span class="verdict-pulse">
+              <span class="ping"></span>
+              <span class="dot"></span>
+            </span>
+            <div id="report-verdict-icon" class="verdict-emoji"></div>
+            <h1 id="report-verdict-label" class="verdict-heading">Analyzing...</h1>
           </div>
         </div>
-
-        <div class="report-reasoning" id="report-reasoning"></div>
-
-        <div class="report-findings" id="report-findings">
-          <!-- Finding pills injected by JS -->
+        
+        <div class="report-meta-box">
+          <div id="report-score" class="report-score-text"></div>
+          <div class="summary-chip mt-sm" id="report-agents"></div>
+          <div class="summary-chip" id="report-depth"></div>
         </div>
-
+        
+        <div class="report-reasoning-section">
+          <h2 class="section-heading">Exploit Vector Diagnostic</h2>
+          <div id="report-reasoning" class="reasoning-text"></div>
+        </div>
+        
+        <div id="report-findings" class="report-findings">
+          <!-- injected by JS -->
+        </div>
+        
         <div class="report-footer">
-          <div class="report-flags" id="report-flags"></div>
-          <button id="new-investigation-btn" class="btn-new-investigation">
-            Investigate Another Contract
+          <div id="report-flags" class="report-flags"></div>
+          <button id="new-investigation-btn" class="btn-primary">
+            <span class="material-symbols-outlined">search</span>
+            <span>Investigate Another</span>
           </button>
         </div>
       </div>
-
+      
     </section>
   </main>
 
-  <!-- ── Footer ── -->
-  <footer class="site-footer">
-    <p>ContractGuard · Autonomous AI Agent Demo · Read-only · Sepolia Testnet · <strong>Not financial advice</strong></p>
-  </footer>
+  <nav class="bottom-nav">
+    <a href="#" class="nav-item active">
+      <span class="material-symbols-outlined">shield</span>
+      <span class="nav-label">Investigate</span>
+    </a>
+    <a href="#" class="nav-item">
+      <span class="material-symbols-outlined">radar</span>
+      <span class="nav-label">Feeds</span>
+    </a>
+    <a href="#" class="nav-item">
+      <span class="material-symbols-outlined">description</span>
+      <span class="nav-label">Reports</span>
+    </a>
+    <a href="#" class="nav-item">
+      <span class="material-symbols-outlined">tune</span>
+      <span class="nav-label">Config</span>
+    </a>
+  </nav>
 
   <script src="/static/app.js"></script>
 </body>
